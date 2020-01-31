@@ -48,7 +48,7 @@ export default function HomeScreen() {
           <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
             <Text style={styles.helpLinkText}>
               Help, it didn’t automatically reload!
-            </Text>
+             </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
+    fontFamily: 'OpenSans-Regular'
   },
   contentContainer: {
     paddingTop: 30,
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   helpLink: {
-    paddingVertical: 15,
+    paddingVertical: 10,
   },
   helpLinkText: {
     fontSize: 14,

@@ -1,24 +1,34 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-class AboutScreen extends React.Component {
-  return (
-    <ScrollView style={styles.container}>
-    </ScrollView>
-  );
-}
+import MenuDrawer from '../navigation/MenuDrawer'
 
-AboutScreen.navigationOptions = {
-  title: 'About Us',
+class AboutScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <MenuDrawer navigation={this.props.navigation} />
+        <Text style={styles.text}>local Broker</Text>
+      </View>
+    )
+  }}
+
+  AboutScreen.navigationOptions = {
+  title: 'AboutScreen',
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
+    alignItems: 'center'
   },
+  text: {
+    fontSize: 30,
+    textAlign: 'center',
+    margin: 10
+  }
 });
 
 export default withNavigation(AboutScreen);

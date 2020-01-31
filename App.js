@@ -1,11 +1,52 @@
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import React, { useState } from "react";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import AppNavigator from "./navigation/AppNavigator";
+import { font } from "./constants/font";
 
-import AppNavigator from './navigation/AppNavigator';
+/*import { AppRegistry } from "react-native";
+import { TabNavigator } from 'react-navigation';
+import SaleScreen from './screens/SaleScreen';
+import BuyScreen from './screens/BuyScreen';
+import RentScreen from './screens/RentScreen';
+
+//screen names
+//import { SaleScreen, BuyScreen, RentScreen } from './screens/screenNames';
+
+let routeConfigs = {
+  Sale: {
+    Screen: SaleScreen,
+  },
+  Buy: {
+    Screen: BuyScreen,
+  },
+  Rent: {
+    Screen: RentScreen,
+  },
+
+};
+let tabNavigatorConfig = {
+  tabBarPosition: 'Top',
+  animationEnabled: true,
+  swipeEnabled: true,
+  tabBarOptions: {
+    activeTinColor: 'blue',
+    labelStyle: {
+      fontSize: 13,
+    },
+    style: {
+      backgroundColor: 'lightgray',
+      padding: -10
+    },
+    // showLabel: false
+  },
+ // order: [Sale, Buy, Rent],
+};
+const App = TabNavigator(routeConfigs, tabNavigatorConfig);
+AppRegistry.registerComponent('localbrokers', () => App)*/
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -21,19 +62,21 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        {Platform.OS === "ios" && <StatusBar barStyle="default" />}
         <AppNavigator />
       </View>
     );
   }
 }
-
+ 
 async function loadResourcesAsync() {
+  
   await Promise.all([
     Asset.loadAsync([
-      require('./assets/images/robot-dev.png'),
-      require('./assets/images/robot-prod.png'),
-      require('./assets/images/ic_launcher.png'),
+      require("./assets/images/robot-dev.png"),
+      require("./assets/images/robot-prod.png"),
+      require("./assets/images/ic_launcher.png"),
+      require("./assets/fonts/PTMono-Regular.ttf")
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
@@ -41,8 +84,10 @@ async function loadResourcesAsync() {
       ...FontAwesome.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-    }),
+      "PTMono-Regular": require("./assets/fonts/PTMono-Regular.ttf"),
+      uri: require('./assets/fonts/PTMono-Regular.ttf'),
+    fontDisplay: FontDisplay.FALLBACK,
+    })
   ]);
 }
 
@@ -59,6 +104,7 @@ function handleFinishLoading(setLoadingComplete) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: "#fff"
+  }
 });
+ 
